@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Thúy & An — Wedding Invitation</title>
+  <title>Nguyễn Thị Thúy & Nguyễn Danh An — Wedding Invitation</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,12 +55,12 @@
 
     .door-left {
       left: 0; 
-      transform-origin: left center; /* Xoay từ bản lề trái */
+      transform-origin: left center; 
       border-right: 1px solid rgba(0,0,0,0.1);
     }
     .door-right {
       right: 0; 
-      transform-origin: right center; /* Xoay từ bản lề phải */
+      transform-origin: right center; 
       border-left: 1px solid rgba(0,0,0,0.1);
     }
 
@@ -75,7 +75,7 @@
     }
 
     .monogram-box {
-      width: 120px; height: 120px;
+      width: 130px; height: 130px;
       background: #fff;
       border: 2px solid var(--primary);
       border-radius: 50%;
@@ -87,7 +87,6 @@
       animation: pulseGlow 2s infinite;
       position: relative;
     }
-    /* Đường cắt giữa nút bấm để tạo cảm giác nó thuộc về 2 cánh cửa (tùy chọn) */
     .monogram-box::after {
       content: ''; position: absolute; top: -5px; bottom: -5px; left: 50%; width: 1px;
       border-left: 1px dashed rgba(0,0,0,0.1);
@@ -113,11 +112,9 @@
       box-shadow: 0 20px 50px rgba(0,0,0,0.15);
       overflow: hidden;
       display: flex; flex-direction: column;
-      
-      /* Ban đầu thiệp hơi nhỏ và mờ để tạo hiệu ứng zoom khi cửa mở */
       opacity: 0; 
       transform: scale(0.9); 
-      transition: all 1.5s ease 0.5s; /* Delay 0.5s chờ cửa mở hé */
+      transition: all 1.5s ease 0.5s; 
     }
     .card.visible { opacity: 1; transform: scale(1); }
 
@@ -140,7 +137,7 @@
     .script-font { font-family: 'Great Vibes', cursive; color: var(--accent); font-weight: normal; }
     
     .header-sub { text-transform: uppercase; letter-spacing: 3px; font-size: 12px; color: var(--primary); font-weight: 600; }
-    .main-title { font-size: 60px; line-height: 1.2; margin: 15px 0; }
+    .main-title { font-size: 52px; line-height: 1.2; margin: 15px 0; }
     .date-display { border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 15px 0; margin: 20px auto; display: inline-block; width: 80%; }
     .date-display span { font-size: 18px; letter-spacing: 2px; font-weight: 600; }
 
@@ -181,8 +178,8 @@
     
     <div class="gate-content">
       <div class="monogram-box" onclick="openGate()">
-        <h1 class="script-font" style="font-size: 36px; margin-top: 10px;">T & A</h1>
-        <small style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Mở Thiệp</small>
+        <h1 class="script-font" style="font-size: 32px; margin-top: 10px; color: var(--primary);">Thúy & An</h1>
+        <small style="font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #888;">Mở Thiệp</small>
       </div>
       <p style="color: #888; font-style: italic; margin-top: 15px;">Trân trọng kính mời</p>
     </div>
@@ -192,15 +189,15 @@
     <div class="card" id="main-card">
       
       <div class="photo-panel">
-        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop" alt="Wedding Couple">
+        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop" alt="Nguyễn Thị Thúy & Nguyễn Danh An">
       </div>
 
       <div class="content-panel">
         <p class="header-sub">Save The Date</p>
-        <h1 class="script-font main-title">Ngọc Thúy <br> & <br> Thanh An</h1>
+        <h1 class="script-font main-title">Nguyễn Thị Thúy <br> & <br> Nguyễn Danh An</h1>
         
         <div class="date-display">
-          <span>01 • 01 • 2026</span>
+          <span>14 • 12 • 2025</span>
         </div>
 
         <p style="font-style: italic; color: #777;">"Tình yêu không phải là tìm thấy một người hoàn hảo, mà là học cách nhìn thấy sự hoàn hảo ở một người không hoàn hảo."</p>
@@ -220,7 +217,7 @@
           </div>
           <div class="event-row">
             <div class="icon-box">⏰</div>
-            <div><strong>10:30 Sáng</strong><br><small>Thứ Năm, Ngày 01/01/2026</small></div>
+            <div><strong>10:30 Sáng</strong><br><small>Chủ Nhật, ngày 14 tháng 12 năm 2025</small></div>
           </div>
         </div>
 
@@ -234,7 +231,7 @@
 
         <div style="margin-top: 40px;">
           <h3>Gửi lời chúc & RSVP</h3>
-          <form onsubmit="event.preventDefault(); alert('Đã nhận xác nhận của bạn! Xin cảm ơn. 💕');" style="margin-top: 20px;">
+          <form onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã gửi lời chúc phúc! 💕');" style="margin-top: 20px;">
             <input type="text" placeholder="Tên của bạn..." required>
             <input type="number" placeholder="Số người đi cùng..." min="1" required>
             <textarea rows="3" placeholder="Lời nhắn cho cô dâu chú rể..."></textarea>
@@ -243,7 +240,7 @@
         </div>
         
         <footer style="margin-top: 30px; font-size: 12px; color: #aaa; padding-bottom: 20px;">
-          Designed with ❤ for Thúy & An
+          Hân hạnh đón tiếp!
         </footer>
 
       </div>
@@ -256,19 +253,18 @@
       const gate = document.getElementById('gate-container');
       const card = document.getElementById('main-card');
       
-      // Thêm class để kích hoạt xoay cửa 3D
       gate.classList.add('open');
       
-      // Kích hoạt animation cho thiệp bên trong
       setTimeout(() => {
         card.classList.add('visible');
-        gate.classList.add('hidden'); // Ẩn hẳn cổng để không che nội dung
-        createFallingEffect(); // Thả tim
-      }, 1600); // Đợi cửa mở gần hết mới hiện rõ thiệp
+        gate.classList.add('hidden'); 
+        createFallingEffect(); 
+      }, 1600);
     }
 
-    // 2. Countdown Timer
-    const weddingDate = new Date("2026-01-01T10:30:00").getTime();
+    // 2. Cập nhật ngày cưới: 14/12/2025 lúc 10:30 sáng
+    const weddingDate = new Date("2025-12-14T10:30:00").getTime();
+    
     setInterval(() => {
       const now = new Date().getTime();
       const dist = weddingDate - now;
