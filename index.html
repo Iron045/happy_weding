@@ -8,20 +8,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
   
 </head>
 <body>
 
-  <div id="gate-container">
-    <div class="door door-left"></div>
-    <div class="door door-right"></div>
-    <div class="gate-content">
-      <div class="monogram-box" onclick="openGate()">
-        <h1 class="script-font" style="font-size: 45px; margin-top: 15px; color: var(--deep-red); line-height: 0.8;">T<span style="font-size: 30px; color: var(--gold);">&</span>A</h1>
-        <small style="font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--text-body); margin-top: 10px; font-weight: 600;">Mở Thiệp Cưới</small>
+  <div id="gate-container" onclick="openGate()">
+    <div class="gate-perspective">
+      
+      <div class="book-cover">
+        
+        <div class="cover-left-panel">
+           <div class="ornament top-left"></div>
+           <div class="ornament bottom-left"></div>
+        </div>
+
+        <div class="cover-right-panel">
+           <div class="ornament top-right"></div>
+           <div class="ornament bottom-right"></div>
+           
+           <div class="cover-content">
+               <div class="song-hy-badge">
+                   <div class="sh-circle">
+                       <span class="sh-text">囍</span>
+                   </div>
+               </div>
+
+               <div class="cover-text-group">
+                   <h1 class="cover-title">Thiệp</h1>
+                   <h1 class="cover-title">Mời</h1>
+               </div>
+
+               <p class="click-hint">Chạm để mở sổ</p>
+           </div>
+        </div>
+        
       </div>
+      
     </div>
   </div>
 
@@ -29,10 +54,6 @@
     <div class="card-wrapper">
       <div class="card" id="main-card">
         
-        <div class="photo-panel old-photo-panel">
-          <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop" alt="Thúy & An Wedding">
-        </div>
-
         <div class="content-panel">
           
           <div class="hero-section-split">
@@ -45,6 +66,7 @@
                   <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop" alt="Wedding Couple" class="hero-main-img">
               </div>
           </div>
+          
           <p class="header-sub" style="margin-top: 30px;">Trân trọng kính mời</p>
           
           <div class="date-circle">
@@ -156,14 +178,18 @@
       const gate = document.getElementById('gate-container');
       const card = document.getElementById('main-card');
       gate.classList.add('open');
+      
+      // Delay để hiện thiệp sau khi cửa mở (1.5 giây sau mới ẩn bìa hoàn toàn)
       setTimeout(() => {
         card.classList.add('visible');
+        
+        // Chỉ ẩn sự kiện chuột, không ẩn display để giữ lại vẻ đẹp của bìa đang mở
         setTimeout(() => {
              gate.classList.add('hidden');
-        }, 1000);
+        }, 1500);
        
         createHearts();
-      }, 1500);
+      }, 800);
     }
 
     const weddingDate = new Date(2025, 11, 13, 16, 30, 0).getTime();
@@ -187,12 +213,11 @@
     }, 1000);
 
     function createHearts() {
-      /* Cập nhật màu tim rơi theo tông đỏ vàng mới */
       const colors = ['#c7a35d', '#7c1e1e', '#b08d55', '#d32f2f', '#e8d6b3'];
       for(let i=0; i<25; i++){
         const el = document.createElement('div');
         el.className = 'falling-item';
-        el.innerHTML = ['❤', 'Song Hỷ', '✨'][Math.floor(Math.random() * 3)];
+        el.innerHTML = ['❤', '囍', '✨'][Math.floor(Math.random() * 3)];
         el.style.left = Math.random() * 100 + 'vw';
         el.style.color = colors[Math.floor(Math.random() * colors.length)];
         el.style.fontSize = (Math.random() * 25 + 15) + 'px';
