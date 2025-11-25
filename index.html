@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Pacifico&family=Pinyon+Script&family=Satisfy&family=Cookie&family=Parisienne&family=Allura&family=Sacramento&family=Tangerine:wght@700&family=Herr+Von+Muellerhoff&family=Italianno&family=Petit+Formal+Script&family=Rouge+Script&family=Alex+Brush&family=Meie+Script&family=Monsieur+La+Doulaise&family=Mrs+Saint+Delafield&family=Rochester&family=Yellowtail&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   
@@ -63,7 +64,7 @@
                   <div class="hero-name">An</div>
               </div>
               <div class="hero-img-col">
-                  <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop" alt="Wedding Couple" class="hero-main-img">
+                  <img src="ac11.jpg" alt="Wedding Couple" class="hero-main-img">
               </div>
           </div>
           
@@ -126,7 +127,7 @@
             </div>
 
             <div class="location-info">
-              <strong>Tư Gia Nhà Trai</strong><br>
+              <strong>Tư Gia Nhà Gái</strong><br>
               <small>Ngách 41/52 đường Canh Nậu 1, xã Tây Phương, Hà Nội</small>
             </div>
 
@@ -150,19 +151,29 @@
 
           <h4 style="margin-top: 40px; font-size: 18px; font-family: 'Cinzel Decorative'; color: var(--text-body); text-align: center;">Album Kỷ Niệm</h4>
           <div class="album-vertical-list">
-            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop" class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=800&auto=format&fit=crop" class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1621621667797-e06afc217fb0?q=80&w=800&auto=format&fit=crop" class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800&auto=format&fit=crop" class="gallery-item">
+            <img src="ac2.jpg" class="gallery-item">
+            <img src="ac3.jpg" class="gallery-item">
+            <img src="ac4.jpg" class="gallery-item">
+            <img src="ac5.jpg" class="gallery-item">
+            <img src="ac6.jpg" class="gallery-item">
+            <img src="ac7.jpg" class="gallery-item">
+            <img src="ac8.jpg" class="gallery-item">
+            <img src="ac9.jpg" class="gallery-item">
+            <img src="ac10.jpg" class="gallery-item">
           </div>
 
-          <div style="margin-top: 40px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-            <h4 style="margin-bottom: 20px; font-family: 'Cinzel Decorative'; color: var(--gold);">Gửi lời chúc phúc</h4>
-            <form onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã gửi lời chúc! 💕 Chúng tôi rất trân trọng.');">
-              <input type="text" placeholder="Tên của bạn..." required>
-              <textarea rows="3" placeholder="Viết lời chúc tốt đẹp nhất..." required></textarea>
-              <button class="btn-submit">Gửi lời chúc</button>
+          <div class="wishes-box">
+            <h4 class="wishes-title">Gửi Lời Chúc</h4>
+            <p class="wishes-subtitle">Chia sẻ niềm vui cùng chúng mình nhé!</p>
+
+            <form onsubmit="event.preventDefault(); alert('Cảm ơn lời chúc của bạn!');">
+              <div class="wish-input-group">
+                <input type="text" class="wish-input" placeholder="Tên của bạn" required>
+              </div>
+              <div class="wish-input-group">
+                <textarea rows="4" class="wish-input" placeholder="Nhập lời chúc..." required></textarea>
+              </div>
+              <button class="btn-submit-wish">Gửi Lời Chúc</button>
             </form>
           </div>
           
@@ -186,10 +197,10 @@
         // Chỉ ẩn sự kiện chuột, không ẩn display để giữ lại vẻ đẹp của bìa đang mở
         setTimeout(() => {
              gate.classList.add('hidden');
-        }, 1500);
+        }, 4200);
        
         createHearts();
-      }, 800);
+      }, 1000);
     }
 
     const weddingDate = new Date(2025, 11, 13, 16, 30, 0).getTime();
@@ -213,19 +224,38 @@
     }, 1000);
 
     function createHearts() {
-      const colors = ['#c7a35d', '#7c1e1e', '#b08d55', '#d32f2f', '#e8d6b3'];
-      for(let i=0; i<25; i++){
-        const el = document.createElement('div');
-        el.className = 'falling-item';
-        el.innerHTML = ['❤', '囍', '✨'][Math.floor(Math.random() * 3)];
-        el.style.left = Math.random() * 100 + 'vw';
-        el.style.color = colors[Math.floor(Math.random() * colors.length)];
-        el.style.fontSize = (Math.random() * 25 + 15) + 'px';
-        el.style.animationDuration = (Math.random() * 5 + 6) + 's';
-        el.style.animationDelay = Math.random() * 2 + 's';
-        document.body.appendChild(el);
-      }
-    }
+  const colors = ['#c7a35d', '#7c1e1e', '#b08d55', '#d32f2f', '#e8d6b3'];
+
+  for (let i = 0; i < 25; i++) {
+    const el = document.createElement('div');
+    el.className = 'falling-item';
+    el.innerHTML = ['❤', '囍', '✨'][Math.floor(Math.random() * 3)];
+    
+    // Vị trí ngang ngẫu nhiên
+    el.style.left = Math.random() * 100 + 'vw';
+    
+    // Màu sắc ngẫu nhiên
+    el.style.color = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Kích thước ngẫu nhiên
+    el.style.fontSize = (Math.random() * 25 + 15) + 'px';
+    
+    // Tốc độ rơi: Từ 3s đến 6s (để nhìn rõ hiệu ứng mờ dần)
+    const duration = Math.random() * 3 + 3; 
+    el.style.animationDuration = duration + 's';
+    
+    // Độ trễ xuất hiện
+    const delay = Math.random() * 2;
+    el.style.animationDelay = delay + 's';
+
+    document.body.appendChild(el);
+
+    // Xóa phần tử sau khi animation kết thúc để tránh nặng máy
+    setTimeout(() => {
+      el.remove();
+    }, (duration + delay) * 1000);
+  }
+}
   </script>
 </body>
 </html>
