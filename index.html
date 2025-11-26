@@ -166,14 +166,14 @@
             <h4 class="wishes-title">Gửi Lời Chúc</h4>
             <p class="wishes-subtitle">Chia sẻ niềm vui cùng chúng mình nhé!</p>
 
-            <form onsubmit="event.preventDefault(); alert('Cảm ơn lời chúc của bạn!');">
+            <form id="wishes-form">
               <div class="wish-input-group">
-                <input type="text" class="wish-input" placeholder="Tên của bạn" required>
+                <input type="text" id="name" name="name" class="wish-input" placeholder="Tên của bạn" required>
               </div>
               <div class="wish-input-group">
-                <textarea rows="4" class="wish-input" placeholder="Nhập lời chúc..." required></textarea>
+                <textarea rows="4" id="content" name="content" class="wish-input" placeholder="Nhập lời chúc..." required></textarea>
               </div>
-              <button class="btn-submit-wish">Gửi Lời Chúc</button>
+              <button type="submit" id="btn-submit-wish" class="btn-submit-wish">Gửi Lời Chúc</button>
             </form>
           </div>
           
@@ -224,38 +224,83 @@
     }, 1000);
 
     function createHearts() {
-  const colors = ['#c7a35d', '#7c1e1e', '#b08d55', '#d32f2f', '#e8d6b3'];
+      const colors = ['#c7a35d', '#7c1e1e', '#b08d55', '#d32f2f', '#e8d6b3'];
 
-  for (let i = 0; i < 25; i++) {
-    const el = document.createElement('div');
-    el.className = 'falling-item';
-    el.innerHTML = ['❤', '囍', '✨'][Math.floor(Math.random() * 3)];
-    
-    // Vị trí ngang ngẫu nhiên
-    el.style.left = Math.random() * 100 + 'vw';
-    
-    // Màu sắc ngẫu nhiên
-    el.style.color = colors[Math.floor(Math.random() * colors.length)];
-    
-    // Kích thước ngẫu nhiên
-    el.style.fontSize = (Math.random() * 25 + 15) + 'px';
-    
-    // Tốc độ rơi: Từ 3s đến 6s (để nhìn rõ hiệu ứng mờ dần)
-    const duration = Math.random() * 3 + 3; 
-    el.style.animationDuration = duration + 's';
-    
-    // Độ trễ xuất hiện
-    const delay = Math.random() * 2;
-    el.style.animationDelay = delay + 's';
+      for (let i = 0; i < 25; i++) {
+        const el = document.createElement('div');
+        el.className = 'falling-item';
+        el.innerHTML = ['❤', '囍', '✨'][Math.floor(Math.random() * 3)];
+        
+        // Vị trí ngang ngẫu nhiên
+        el.style.left = Math.random() * 100 + 'vw';
+        
+        // Màu sắc ngẫu nhiên
+        el.style.color = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Kích thước ngẫu nhiên
+        el.style.fontSize = (Math.random() * 25 + 15) + 'px';
+        
+        // Tốc độ rơi: Từ 3s đến 6s
+        const duration = Math.random() * 3 + 3; 
+        el.style.animationDuration = duration + 's';
+        
+        // Độ trễ xuất hiện
+        const delay = Math.random() * 2;
+        el.style.animationDelay = delay + 's';
 
-    document.body.appendChild(el);
+        document.body.appendChild(el);
 
-    // Xóa phần tử sau khi animation kết thúc để tránh nặng máy
-    setTimeout(() => {
-      el.remove();
-    }, (duration + delay) * 1000);
-  }
-}
+        // Xóa phần tử sau khi animation kết thúc
+        setTimeout(() => {
+          el.remove();
+        }, (duration + delay) * 1000);
+      }
+    }
+
+    // ---------------------------------------------------------
+    // CODE GỬI LỜI CHÚC VỀ GOOGLE SHEET
+    // ---------------------------------------------------------
+    
+    // 👇👇👇 DÁN LINK GOOGLE APPS SCRIPT CỦA BẠN VÀO DƯỚI ĐÂY 👇👇👇
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxh2jf3l8mUETCLA5JbKFwC9iN-aEiNwZk6KgssGyfiAcC_yD0VCiLZc-7KrLHkEuY-iQ/exec'; 
+    // 👆👆👆 Ví dụ: https://script.google.com/macros/s/AKfycb.../exec
+
+    const form = document.getElementById('wishes-form');
+    const btnSubmit = document.getElementById('btn-submit-wish');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      
+      // Kiểm tra xem đã dán link chưa
+      if(scriptURL.includes('DÁN_LINK')) {
+          alert('Bạn chưa dán đường link Google Script vào code!');
+          return;
+      }
+
+      // Hiệu ứng đang gửi
+      const originalText = btnSubmit.innerText;
+      btnSubmit.innerText = 'Đang gửi...';
+      btnSubmit.disabled = true;
+      btnSubmit.style.opacity = '0.7';
+
+      const requestBody = new FormData(form);
+
+      fetch(scriptURL, { method: 'POST', body: requestBody})
+        .then(response => {
+           alert('Cảm ơn bạn! Lời chúc đã được gửi thành công ♥');
+           form.reset();
+           btnSubmit.innerText = originalText;
+           btnSubmit.disabled = false;
+           btnSubmit.style.opacity = '1';
+        })
+        .catch(error => {
+           alert('Có lỗi xảy ra! Vui lòng thử lại sau.');
+           console.error('Error!', error.message);
+           btnSubmit.innerText = originalText;
+           btnSubmit.disabled = false;
+           btnSubmit.style.opacity = '1';
+        });
+    });
   </script>
 </body>
 </html>
